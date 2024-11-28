@@ -2,9 +2,27 @@
 <body>
     <h1>Multiplikation</h1>
     <ol>
-        <li>5x6=<input/></li>
+        <li><span id="fraga1"></span><input/></li>
         <li>7x3=<input/></li>
         <li>9x8=<input/></li>
     </ol>
     <button id="Rätta">Rätta svar</button>
 </body>
+<script>
+    var Tal1 = randomIntFromInterval(0,10); 
+    var Tal2 = randomIntFromInterval(0,10);
+    var svar = Tal1 * Tal2;
+    var Fraga = `${Tal1}x${Tal2}=`;
+    console.log(Tal1);
+    console.log(Tal2);
+    console.log(svar);
+    console.log(Fraga)
+    var fraga1 = document.getElementById('fraga1')
+    fraga1.innerText = Fraga
+
+    function randomIntFromInterval(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+
+</script>
