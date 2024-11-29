@@ -2,20 +2,23 @@
 <body>
     <h1>Multiplikation</h1>
     <ol>
-        <li><span id="fraga1"></span><input/></li>
-        <li><span id="fraga2"></span><input/></li>
-        <li><span id="fraga3"></span><input/></li>
-        <li><span id="fraga4"></span><input/></li>
-        <li><span id="fraga5"></span><input/></li>
-        <li><span id="fraga6"></span><input/></li>
-        <li><span id="fraga7"></span><input/></li>
-        <li><span id="fraga8"></span><input/></li>
-        <li><span id="fraga9"></span><input/></li>
-        <li><span id="fraga10"></span><input/></li>
+        <li><span id="fraga1"></span><input id="svar1"/> <span id="rattsvar1"></span></li>
+        <li><span id="fraga2"></span><input id="svar2"/> <span id="rattsvar2"></span></li>
+        <li><span id="fraga3"></span><input id="svar3"/> <span id="rattsvar3"></span></li>
+        <li><span id="fraga4"></span><input id="svar4"/> <span id="rattsvar4"></span></li>
+        <li><span id="fraga5"></span><input id="svar5"/> <span id="rattsvar5"></span></li>
+        <li><span id="fraga6"></span><input id="svar6"/> <span id="rattsvar6"></span></li>
+        <li><span id="fraga7"></span><input id="svar7"/> <span id="rattsvar7"></span></li>
+        <li><span id="fraga8"></span><input id="svar8"/> <span id="rattsvar8"></span></li>
+        <li><span id="fraga9"></span><input id="svar9"/> <span id="rattsvar9"></span></li>
+        <li><span id="fraga10"></span><input id="svar10"/> <span id="rattsvar10"></span></li>
     </ol>
-    <button onclick="correctanswer()" "Rätta">Rätta svar</button>
+    <button onclick="correctanswer()" id="Rätta">Rätta svar</button>
+    <button onclick="runagain()">Kör igen</button>
 </body>
 <script>
+    var rattsvar = [];
+    var Antalratt = 0
    addQuestion('fraga1')
    addQuestion('fraga2')
    addQuestion('fraga3')
@@ -26,30 +29,91 @@
    addQuestion('fraga8')
    addQuestion('fraga9')
    addQuestion('fraga10')
+   
 
+ function runagain()
+ {
+    addQuestion('fraga1')
+   addQuestion('fraga2')
+   addQuestion('fraga3')
+   addQuestion('fraga4')
+   addQuestion('fraga5')
+   addQuestion('fraga6')
+   addQuestion('fraga7')
+   addQuestion('fraga8')
+   addQuestion('fraga9')
+   addQuestion('fraga10')
+    document.getElementById('svar1').style='background-color:white'
+    document.getElementById('svar2').style='background-color:white'
+    document.getElementById('svar3').style='background-color:white'
+    document.getElementById('svar4').style='background-color:white'
+    document.getElementById('svar5').style='background-color:white'
+    document.getElementById('svar6').style='background-color:white'
+    document.getElementById('svar7').style='background-color:white'
+    document.getElementById('svar8').style='background-color:white'
+    document.getElementById('svar9').style='background-color:white'
+    document.getElementById('svar10').style='background-color:white'
+    
+ }
 
-    function randomIntFromInterval(min, max) { // min and max included 
+   function randomIntFromInterval(min, max) { // min and max included 
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-function addQuestion(fragaid)
-{
-    var Tal1 = randomIntFromInterval(0,10); 
-    var Tal2 = randomIntFromInterval(0,10);
-    var svar = Tal1 * Tal2;
-    var Fraga1 = `${Tal1}x${Tal2}=`;
-    console.log(Tal1);
-    console.log(Tal2);
-    console.log(svar);
-    console.log(Fraga1)
+    function addQuestion(fragaid)
+    {
+        var Tal1 = randomIntFromInterval(0,10); 
+        var Tal2 = randomIntFromInterval(0,10);
+        var svar = Tal1 * Tal2;
+        var Fraga1 = `${Tal1}x${Tal2}=`;
+    /*  console.log(Tal1);
+        console.log(Tal2);
+        console.log(svar);
+        console.log(Fraga1) */
+        rattsvar.push(svar)
+        var fraga1 = document.getElementById(fragaid)
+        fraga1.innerText = Fraga1
 
-    var fraga1 = document.getElementById(fragaid)
-    fraga1.innerText = Fraga1
+    }
 
-}
-function correctanswer()
-{
-var hej = randomIntFromInterval(100,200)
-console.log(hej)
-}
+    function correctanswer()
+    {
+       Antalratt=0
+        checkanswers('svar1',0)
+        checkanswers('svar2',1)
+        checkanswers('svar3',2)
+        checkanswers('svar4',3)
+        checkanswers('svar5',4)
+        checkanswers('svar6',5)
+        checkanswers('svar7',6)
+        checkanswers('svar8',7)
+        checkanswers('svar9',8)
+        checkanswers('svar10',9)
+        console.log(Antalratt)
+    }
+
+    function checkanswers(svarid,rattsvarindex)
+    {
+        var input = document.getElementById(svarid) // svarid = 'svar1'
+       
+
+        if(input.value==rattsvar[rattsvarindex] && input.value!='')
+        {
+            /* console.log('rätt svar') */
+            Antalratt=Antalratt + 1
+            var rattsvar1 = document.getElementById('ratt'+svarid)
+            rattsvar1.innerText = ''
+            input.style='background-color:green;'
+            
+
+        }
+        else
+        {
+            // console.log('fel svar')
+            var rattsvar1 = document.getElementById('ratt'+svarid)
+            rattsvar1.innerText = rattsvar[rattsvarindex]
+            input.style='background-color:red;'
+        }
+  
+    }
 </script>
