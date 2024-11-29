@@ -13,7 +13,7 @@
         <li><span id="fraga9"></span><input/></li>
         <li><span id="fraga10"></span><input/></li>
     </ol>
-    <button id="Rätta">Rätta svar</button>
+    <button onclick="correctanswer()" "Rätta">Rätta svar</button>
 </body>
 <script>
    addQuestion('fraga1')
@@ -47,5 +47,9 @@ function addQuestion(fragaid)
     fraga1.innerText = Fraga1
 
 }
-
+function correctanswer()
+{
+var hej = randomIntFromInterval(100,200)
+console.log(hej)
+}
 </script>
