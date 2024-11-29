@@ -9,33 +9,28 @@
     <button id="Rätta">Rätta svar</button>
 </body>
 <script>
-    var Tal1 = randomIntFromInterval(0,10); 
-    var Tal2 = randomIntFromInterval(0,10);
-    var svar = Tal1 * Tal2;
-    var Fraga1 = `${Tal1}x${Tal2}=`;
+   addQuestion('fraga1')
+   addQuestion('fraga2')
 
-    var Tal3 = randomIntFromInterval(0,10);
-    var Tal4 = randomIntFromInterval(0,10);
-    var svar2 = Tal3 * Tal4;
-    var Fraga2 = `${Tal3}x${Tal4}=`;
-    console.log(Tal1);
-    console.log(Tal2);
-    console.log(svar);
-    console.log(Fraga1)
-
-    console.log(Tal3);
-    console.log(Tal4);
-    console.log(svar2);
-    console.log(Fraga2)
-    var fraga1 = document.getElementById('fraga1')
-    fraga1.innerText = Fraga1
-
-    var fraga2 = document.getElementById('fraga2')
-    fraga2.innerText = Fraga2
 
     function randomIntFromInterval(min, max) { // min and max included 
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
+function addQuestion(fragaid)
+{
+    var Tal1 = randomIntFromInterval(0,10); 
+    var Tal2 = randomIntFromInterval(0,10);
+    var svar = Tal1 * Tal2;
+    var Fraga1 = `${Tal1}x${Tal2}=`;
+    console.log(Tal1);
+    console.log(Tal2);
+    console.log(svar);
+    console.log(Fraga1)
+
+    var fraga1 = document.getElementById(fragaid)
+    fraga1.innerText = Fraga1
+
+}
 
 </script>
